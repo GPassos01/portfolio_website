@@ -1,142 +1,73 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const isScrolled = window.scrollY > 10;
+      setScrolled(isScrolled);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleMobileMenuToggle = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
 
-  const handleMobileMenuClose = () => {
-    setIsMobileMenuOpen(false);
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Escape') {
-      setIsMobileMenuOpen(false);
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+      setIsOpen(false);
     }
   };
 
-  const navItems = [
-    { href: '#home', label: 'Início' },
-    { href: '#about', label: 'Sobre' },
-    { href: '#services', label: 'Serviços' },
-    { href: '#projects', label: 'Projetos' },
-    { href: '#testimonials', label: 'Experiências' },
-    { href: '#contact', label: 'Contato' }
-  ];
-
   return (
-    <>
-      {/* Skip Link para acessibilidade */}
-      <a href="#main-content" className="skip-link">
-        Pular para o conteúdo principal
-      </a>
-      
-      <nav 
-        className={`navbar ${isScrolled ? 'scrolled' : ''}`}
-        role="navigation"
-        aria-label="Navegação principal"
-      >
-        <div className="container">
-          <motion.div
-            className="navbar-brand"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <a 
-              href="#home" 
-              className="brand-link"
-              aria-label="Voltar ao início"
-            >
-              Gabriel Passos
-            </a>
-          </motion.div>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="container">
+        <div className="nav-container">
+          <div className="nav-logo" onClick={() => scrollToSection('home')}>
+            <h2>Gabriel Passos</h2>
+          </div>
 
-          {/* Menu Desktop */}
-          <motion.ul
-            className="navbar-nav"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            role="menubar"
-          >
-            {navItems.map((item, index) => (
-              <li key={item.href} role="none">
-                <a
-                  href={item.href}
-                  className="nav-link"
-                  role="menuitem"
-                  aria-label={`Ir para seção ${item.label}`}
-                  onClick={handleMobileMenuClose}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </motion.ul>
+          <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
+            <li className="nav-item">
+              <button onClick={() => scrollToSection('about')} className="nav-link">
+                Sobre
+              </button>
+            </li>
+            <li className="nav-item">
+              <button onClick={() => scrollToSection('projects')} className="nav-link">
+                Projetos
+              </button>
+            </li>
+            <li className="nav-item">
+              <button onClick={() => scrollToSection('skills')} className="nav-link">
+                Habilidades
+              </button>
+            </li>
+            <li className="nav-item">
+              <button onClick={() => scrollToSection('contact')} className="nav-link">
+                Contato
+              </button>
+            </li>
+          </ul>
 
-          {/* Botão Mobile */}
-          <button
-            className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`}
-            onClick={handleMobileMenuToggle}
-            onKeyDown={handleKeyDown}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
-
-          {/* Menu Mobile */}
-          <motion.div
-            id="mobile-menu"
-            className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ 
-              opacity: isMobileMenuOpen ? 1 : 0,
-              y: isMobileMenuOpen ? 0 : -20
-            }}
-            transition={{ duration: 0.3 }}
-            role="menu"
-            aria-label="Menu mobile"
-          >
-            {navItems.map((item, index) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="mobile-nav-link"
-                role="menuitem"
-                aria-label={`Ir para seção ${item.label}`}
-                onClick={handleMobileMenuClose}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    handleMobileMenuClose();
-                  }
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </motion.div>
+          <div className="nav-toggle" onClick={toggleMenu}>
+            {isOpen ? <FaTimes /> : <FaBars />}
+          </div>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 

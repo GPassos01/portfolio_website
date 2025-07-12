@@ -1,243 +1,300 @@
-# 🚀 Portfólio Gabriel Passos - Desenvolvedor Full Stack
+# 🚀 Portfólio Pessoal - Gabriel Passos
 
-> **Portfólio profissional moderno e acessível**  
-> Desenvolvido com React, Spring Boot e boas práticas de UX/UI
+Um site portfólio moderno e responsivo construído com **Spring Boot** (backend) e **React** (frontend), apresentando um tema neon cyberpunk com animações fluidas e design profissional.
 
-[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.3-green.svg)](https://spring.io/projects/spring-boot)
-[![Acessibilidade](https://img.shields.io/badge/Acessibilidade-WCAG%202.1%20AA-brightgreen.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
-[![Licença](https://img.shields.io/badge/Licença-MIT-yellow.svg)](LICENSE)
+![Portfolio Preview](https://img.shields.io/badge/Status-Completed-brightgreen)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.0-brightgreen)
+![React](https://img.shields.io/badge/React-18.0-blue)
+![Java](https://img.shields.io/badge/Java-17-orange)
 
 ## 📋 Índice
 
 - [Sobre o Projeto](#-sobre-o-projeto)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Funcionalidades](#-funcionalidades)
-- [Tecnologias](#-tecnologias)
-- [Acessibilidade](#-acessibilidade)
-- [Instalação](#-instalação)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Como Executar](#-como-executar)
 - [API Endpoints](#-api-endpoints)
+- [Componentes Frontend](#-componentes-frontend)
+- [Estilização e Tema](#-estilização-e-tema)
+- [Screenshots](#-screenshots)
 - [Contribuição](#-contribuição)
 - [Licença](#-licença)
 
 ## 🎯 Sobre o Projeto
 
-Portfólio profissional desenvolvido para demonstrar habilidades em desenvolvimento web moderno, com foco em:
+Este é um portfólio pessoal completo desenvolvido para Gabriel Passos, Cientista da Computação. O projeto demonstra habilidades tanto em desenvolvimento backend quanto frontend, apresentando projetos, skills e informações de contato de forma visualmente atrativa.
 
-- **Design responsivo** e profissional
-- **Acessibilidade universal** (WCAG 2.1 AA)
-- **Performance otimizada**
-- **UX/UI moderno** com animações suaves
-- **Backend robusto** com Spring Boot
+### Características Principais:
+- **Design Moderno**: Tema neon cyberpunk com gradientes e animações
+- **Totalmente Responsivo**: Adaptado para desktop, tablet e mobile
+- **API RESTful**: Backend Spring Boot com endpoints bem estruturados
+- **Animações Fluidas**: Usando Framer Motion para transições suaves
+- **Formulário de Contato**: Sistema funcional de envio de mensagens
+- **SEO Otimizado**: Meta tags e estrutura semântica
 
-### 🎨 Design System
+## 🛠️ Tecnologias Utilizadas
 
-- **Cores**: Paleta moderna em tons de índigo, violeta e ciano
-- **Tipografia**: Sistema responsivo com fontes do sistema
-- **Espaçamentos**: Sistema consistente baseado em rem
-- **Animações**: Transições suaves respeitando preferências do usuário
+### Backend
+- **Java 17**: Linguagem principal
+- **Spring Boot 3.0**: Framework web
+- **Gradle**: Gerenciamento de dependências
+- **Spring Web**: Para criação de APIs REST
+- **CORS**: Configurado para comunicação com frontend
+
+### Frontend
+- **React 18**: Biblioteca principal
+- **JavaScript (ES6+)**: Linguagem de programação
+- **CSS3**: Estilização avançada com gradientes e animações
+- **Framer Motion**: Biblioteca de animações
+- **React Icons**: Ícones vetoriais
+- **HTML5**: Estrutura semântica
+
+### Ferramentas de Desenvolvimento
+- **VS Code**: IDE principal
+- **Git**: Controle de versão
+- **npm**: Gerenciador de pacotes
+- **Chrome DevTools**: Debug e testes
 
 ## ✨ Funcionalidades
 
-### Frontend (React)
-- ✅ **Navegação suave** entre seções
-- ✅ **Formulário de contato** funcional
-- ✅ **Galeria de projetos** interativa
-- ✅ **Animações responsivas** com Framer Motion
-- ✅ **Design responsivo** para todos os dispositivos
-- ✅ **Acessibilidade completa** (navegação por teclado, leitores de tela)
+### 🏠 Seção Hero
+- Apresentação pessoal com nome animado
+- Links para redes sociais (GitHub, LinkedIn)
+- Botões de call-to-action
+- Animações de background flutuantes
 
-### Backend (Spring Boot)
-- ✅ **API RESTful** para formulário de contato
-- ✅ **Validação de dados** robusta
-- ✅ **Envio de emails** automático
-- ✅ **Banco de dados** H2 (desenvolvimento)
-- ✅ **Documentação** com Swagger
+### 👤 Sobre Mim
+- Biografia profissional
+- Informações sobre formação
+- Objetivo de carreira
 
-## 🛠 Tecnologias
+### 🚀 Projetos
+- Galeria de projetos com cards interativos
+- Projeto principal: Sistema de Análise de Imagens para Monitoramento de Enchentes
+- Card especial "Em Breve" para projetos futuros
+- Links para GitHub e demonstrações
+- Tecnologias utilizadas em cada projeto
 
-### Frontend
-- **React 18.2.0** - Biblioteca principal
-- **Framer Motion** - Animações
-- **React Icons** - Ícones
-- **CSS3** - Estilização moderna
-- **ESLint** - Qualidade de código
+### 🎯 Habilidades
+- Barras de progresso animadas
+- Categorias: Backend, Frontend, Ferramentas
+- Níveis de proficiência visual
 
-### Backend
-- **Spring Boot 3.5.3** - Framework Java
-- **Spring Data JPA** - Persistência
-- **H2 Database** - Banco de dados
-- **Spring Mail** - Envio de emails
-- **Swagger** - Documentação da API
+### 📧 Contato
+- Formulário funcional de contato
+- Validação de campos
+- Envio para API backend
+- Feedback visual para o usuário
 
-## ♿ Acessibilidade
-
-O projeto segue as diretrizes **WCAG 2.1 AA** e implementa:
-
-### ✅ Navegação por Teclado
-- Estados de foco visíveis
-- Skip links para navegação direta
-- Ordem de tab lógica
-
-### ✅ Contraste e Legibilidade
-- Alto contraste (4.5:1 mínimo)
-- Tipografia otimizada
-- Suporte a modo escuro
-
-### ✅ Formulários Acessíveis
-- Labels associados corretamente
-- Validação em tempo real
-- Mensagens de erro claras
-
-### ✅ Estrutura Semântica
-- HTML5 landmarks apropriados
-- Roles ARIA quando necessário
-- Hierarquia de cabeçalhos correta
-
-## 🚀 Instalação
-
-### Pré-requisitos
-- Node.js 18+ 
-- Java 17+
-- Git
-
-### 1. Clone o repositório
-```bash
-git clone https://github.com/seu-usuario/portfolio-website.git
-cd portfolio-website
-```
-
-### 2. Instale as dependências do Frontend
-```bash
-cd frontend
-npm install
-```
-
-### 3. Configure o Backend
-```bash
-cd ../backend
-./gradlew build
-```
-
-### 4. Execute o projeto
-
-**Terminal 1 - Backend:**
-```bash
-cd backend
-./gradlew bootRun
-```
-
-**Terminal 2 - Frontend:**
-```bash
-cd frontend
-npm start
-```
-
-O projeto estará disponível em:
-- **Frontend**: http://localhost:3000
-- **Backend**: http://localhost:8080
-- **API Docs**: http://localhost:8080/swagger-ui.html
+### 🦶 Rodapé
+- Links rápidos para navegação
+- Redes sociais
+- Copyright e informações legais
 
 ## 📁 Estrutura do Projeto
 
 ```
-portfolio-website/
-├── frontend/                 # Aplicação React
-│   ├── public/              # Arquivos estáticos
-│   ├── src/
-│   │   ├── components/      # Componentes React
-│   │   ├── App.js          # Componente principal
-│   │   ├── App.css         # Estilos globais
-│   │   └── index.js        # Ponto de entrada
-│   └── package.json
-├── backend/                  # API Spring Boot
-│   ├── src/main/java/
-│   │   └── com/portfolio/
-│   │       ├── controllers/ # Controladores REST
-│   │       ├── models/      # Entidades JPA
-│   │       ├── services/    # Lógica de negócio
-│   │       └── config/      # Configurações
-│   └── build.gradle
-├── docs/                     # Documentação
-│   ├── ACCESSIBILITY.md     # Guia de acessibilidade
-│   └── API.md              # Documentação da API
-└── README.md
+portfolio_website/
+├── 📁 backend/                    # Aplicação Spring Boot
+│   ├── 📁 src/main/java/com/portfolio/backend/
+│   │   └── 📁 controller/
+│   │       └── 📄 PortfolioController.java    # API REST endpoints
+│   ├── 📄 build.gradle           # Dependências Gradle
+│   └── 📄 gradlew               # Gradle Wrapper
+│
+├── 📁 frontend/                  # Aplicação React
+│   ├── 📁 public/               # Arquivos estáticos
+│   │   ├── 📁 images/           # Imagens do projeto
+│   │   └── 📄 index.html        # HTML principal
+│   │
+│   └── 📁 src/                  # Código fonte React
+│       ├── 📁 components/       # Componentes React
+│       │   ├── 📄 Navbar.js     # Navegação principal
+│       │   ├── 📄 Hero.js       # Seção de apresentação
+│       │   ├── 📄 About.js      # Seção sobre mim
+│       │   ├── 📄 Projects.js   # Galeria de projetos
+│       │   ├── 📄 Skills.js     # Habilidades técnicas
+│       │   ├── 📄 Contact.js    # Formulário de contato
+│       │   ├── 📄 Footer.js     # Rodapé
+│       │   └── 📄 *.css         # Estilos de cada componente
+│       │
+│       ├── 📄 App.js            # Componente raiz
+│       ├── 📄 App.css           # Estilos globais e variáveis CSS
+│       └── 📄 index.js          # Entry point da aplicação
+│
+└── 📄 README.md                 # Este arquivo
 ```
+
+## 🚀 Como Executar
+
+### Pré-requisitos
+- Java 17 ou superior
+- Node.js 16 ou superior
+- npm ou yarn
+
+### 1. Clonar o Repositório
+```bash
+git clone https://github.com/gpassos01/portfolio_website.git
+cd portfolio_website
+```
+
+### 2. Executar o Backend
+```bash
+cd backend
+./gradlew bootRun
+```
+O servidor estará disponível em: `http://localhost:8080`
+
+### 3. Executar o Frontend
+```bash
+cd frontend
+npm install
+npm start
+```
+A aplicação estará disponível em: `http://localhost:3000`
+
+### 4. Acessar a Aplicação
+Abra seu navegador e acesse `http://localhost:3000`
 
 ## 🔌 API Endpoints
 
-### Contato
-- `POST /api/contact` - Enviar mensagem de contato
+### Base URL: `http://localhost:8080/api`
 
-### Projetos
-- `GET /api/projects` - Listar todos os projetos
-- `GET /api/projects/{id}` - Obter projeto específico
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| `GET` | `/profile` | Informações pessoais (nome, título, bio, contatos) |
+| `GET` | `/projects` | Lista de projetos com detalhes |
+| `GET` | `/skills` | Habilidades técnicas categorizadas |
+| `POST` | `/contact` | Envio de formulário de contato |
 
-### Perfil
-- `GET /api/profile` - Obter dados do perfil
+### Exemplos de Resposta
 
-### Swagger UI
-- `GET /swagger-ui.html` - Documentação interativa da API
-
-## 🎨 Componentes Principais
-
-### Frontend
-- **Navbar**: Navegação responsiva com menu mobile
-- **Hero**: Seção de apresentação com animações
-- **About**: Informações pessoais e biografia
-- **Services**: Catálogo de serviços freelance
-- **Projects**: Galeria de projetos com cards interativos
-- **Contact**: Formulário de contato com validação
-- **Footer**: Links e informações de contato
-
-### Backend
-- **ContactController**: Gerencia envio de emails
-- **ProjectController**: CRUD de projetos
-- **ProfileController**: Dados do perfil
-- **EmailService**: Serviço de envio de emails
-
-## 🔧 Configuração
-
-### Variáveis de Ambiente
-
-**Frontend (.env):**
-```env
-REACT_APP_API_URL=http://localhost:8080
+#### GET /api/profile
+```json
+{
+  "name": "Gabriel Passos",
+  "title": "Cientista da Computação",
+  "bio": "Cientista da Computação apaixonado por criar soluções inovadoras.",
+  "email": "gabriel.passos@unesp.br",
+  "github": "https://github.com/gpassos01",
+  "linkedin": "https://www.linkedin.com/in/gabriel-passos26/"
+}
 ```
 
-**Backend (application.properties):**
-```properties
-# Email
-spring.mail.host=smtp.gmail.com
-spring.mail.port=587
-spring.mail.username=seu-email@gmail.com
-spring.mail.password=sua-senha-app
-
-# Database
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.driverClassName=org.h2.Driver
+#### GET /api/projects
+```json
+[
+  {
+    "id": 1,
+    "title": "Análise de Imagens para Monitoramento e Prevenção de Enchentes",
+    "description": "Sistema de análise de imagens de câmera para detecção de mudanças no nível da água...",
+    "technologies": ["Python", "OpenCV", "ESP32-CAM", "Machine Learning", "IoT"],
+    "githubUrl": "https://github.com/gpassos01/espCam_imageAnalysis",
+    "imageUrl": "/images/ai-thinker-esp32-cam.png",
+    "status": "completed"
+  }
+]
 ```
 
-## 🧪 Testes
+## 🧩 Componentes Frontend
 
-### Frontend
-```bash
-cd frontend
-npm test
+### 1. **Navbar.js**
+- **Função**: Navegação principal responsiva
+- **Características**: 
+  - Menu hambúrguer para mobile
+  - Scroll suave entre seções
+  - Highlight da seção ativa
+  - Estilo glassmorphism
+
+### 2. **Hero.js**
+- **Função**: Seção de apresentação principal
+- **Características**:
+  - Nome com gradiente neon animado
+  - Links para redes sociais
+  - Botões de call-to-action
+  - Animações de background
+
+### 3. **About.js**
+- **Função**: Seção sobre informações pessoais
+- **Características**:
+  - Biografia profissional
+  - Animações de entrada
+  - Layout responsivo
+
+### 4. **Projects.js**
+- **Função**: Galeria de projetos
+- **Características**:
+  - Cards interativos com hover effects
+  - Overlay com links para GitHub
+  - Card especial "Em Breve"
+  - Grid responsivo
+
+### 5. **Skills.js**
+- **Função**: Exibição de habilidades técnicas
+- **Características**:
+  - Barras de progresso animadas
+  - Categorização (Backend, Frontend, Tools)
+  - Efeitos visuais shinning
+
+### 6. **Contact.js**
+- **Função**: Formulário de contato
+- **Características**:
+  - Validação de campos
+  - Envio para API
+  - Feedback visual
+  - Design neon
+
+### 7. **Footer.js**
+- **Função**: Rodapé com informações adicionais
+- **Características**:
+  - Links de navegação
+  - Redes sociais
+  - Copyright
+
+## 🎨 Estilização e Tema
+
+### Paleta de Cores Neon
+```css
+:root {
+  /* Cores Primárias */
+  --primary-color: #af3dff;      /* Roxo Neon */
+  --secondary-color: #ff3b94;    /* Rosa Neon */
+  --accent-color: #55ffe1;       /* Ciano Neon */
+  --success-color: #a6fd29;      /* Verde Neon */
+  
+  /* Backgrounds Escuros */
+  --bg-primary: #0a0a0f;         /* Preto Azulado */
+  --bg-secondary: #151520;       /* Cinza Escuro */
+  --bg-card: #1a1a2e;           /* Azul Escuro */
+  
+  /* Textos */
+  --text-primary: #f0f0f0;       /* Branco Suave */
+  --text-secondary: #b0b0b0;     /* Cinza Claro */
+}
 ```
 
-### Backend
-```bash
-cd backend
-./gradlew test
+### Efeitos Visuais
+- **Gradientes**: Múltiplos gradientes com cores neon
+- **Shadows**: Sombras neon coloridas (box-shadow)
+- **Animations**: Animações CSS e Framer Motion
+- **Glassmorphism**: Efeitos de vidro translúcido
+- **Hover Effects**: Interações visuais em elementos
+
+### Responsividade
+```css
+/* Breakpoints */
+@media (max-width: 768px)  { /* Tablet */ }
+@media (max-width: 480px)  { /* Mobile */ }
 ```
 
-## 📊 Performance
+## 📱 Screenshots
 
-- **Lighthouse Score**: 95+ em todas as categorias
-- **Core Web Vitals**: Otimizado
-- **Acessibilidade**: 100% WCAG 2.1 AA
-- **SEO**: Meta tags e estrutura semântica
+### Desktop
+![Desktop View](https://via.placeholder.com/800x400/0a0a0f/af3dff?text=Desktop+View)
+
+### Mobile
+![Mobile View](https://via.placeholder.com/300x600/0a0a0f/af3dff?text=Mobile+View)
 
 ## 🤝 Contribuição
 
@@ -247,24 +304,21 @@ cd backend
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-### Padrões de Código
-- **ESLint** para JavaScript/React
-- **Prettier** para formatação
-- **Conventional Commits** para mensagens
-- **Semantic Versioning** para releases
-
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## 📞 Contato
+---
 
-- **Gabriel Passos** - [LinkedIn](https://linkedin.com/in/gabrielpassos)
-- **Email**: gabriel@email.com
-- **GitHub**: [@gabrielpassos](https://github.com/gabrielpassos)
+## 👨‍💻 Desenvolvido por
+
+**Gabriel Passos**
+- 📧 Email: gabriel.passos@unesp.br
+- 🐱 GitHub: [@gpassos01](https://github.com/gpassos01)
+- 💼 LinkedIn: [gabriel-passos26](https://www.linkedin.com/in/gabriel-passos26/)
 
 ---
 
-⭐ **Se este projeto te ajudou, considere dar uma estrela!**
-
-*Desenvolvido com ❤️ e boas práticas de acessibilidade*
+<div align="center">
+  <h3>⭐ Se gostou do projeto, deixe uma estrela!</h3>
+</div>

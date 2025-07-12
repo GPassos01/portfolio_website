@@ -1,32 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Gabriel Passos - Desenvolvedor de Software especializado em Spring Boot, React e soluções inovadoras"
-    />
-    <meta name="author" content="Gabriel Passos" />
-    <meta name="keywords" content="Gabriel Passos, Desenvolvedor, Software, Spring Boot, React, Java, Python, IoT, Machine Learning" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta name="theme-color" content="#af3dff" />
+    <meta name="description" content="Portfólio pessoal mostrando projetos, habilidades e experiência em desenvolvimento web" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Portfólio" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#af3dff" />
+    <meta name="msapplication-TileImage" content="%PUBLIC_URL%/icons/icon-144x144.png" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://seu-portfolio.com/" />
+    <meta property="og:title" content="Portfólio - Desenvolvedor Full Stack" />
+    <meta property="og:description" content="Portfólio pessoal mostrando projetos, habilidades e experiência em desenvolvimento web" />
+    <meta property="og:image" content="%PUBLIC_URL%/icons/icon-512x512.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://seu-portfolio.com/" />
+    <meta property="twitter:title" content="Portfólio - Desenvolvedor Full Stack" />
+    <meta property="twitter:description" content="Portfólio pessoal mostrando projetos, habilidades e experiência em desenvolvimento web" />
+    <meta property="twitter:image" content="%PUBLIC_URL%/icons/icon-512x512.png" />
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="%PUBLIC_URL%/icons/icon-152x152.png" />
+
+    <!-- Manifest -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Gabriel Passos | Desenvolvedor de Software</title>
+    
+    <!-- Preconnect para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <title>Portfólio - Desenvolvedor Full Stack</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Você precisa habilitar JavaScript para executar este app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registrado: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW falhou: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

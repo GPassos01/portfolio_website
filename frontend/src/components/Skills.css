@@ -1,82 +1,294 @@
+/* Skills/Learning Journey Section */
 .skills {
-  background: 
-    radial-gradient(ellipse at 30% 30%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
-    linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
 }
 
-.skills .container {
+/* Timeline de aprendizado */
+.learning-timeline {
   position: relative;
-  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding: 2rem 0;
 }
 
-.skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  margin-top: 3rem;
+.learning-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--primary-color) 10%,
+    var(--primary-color) 90%,
+    transparent
+  );
+  transform: translateX(-50%);
 }
 
-.skills-category h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
-}
-
-.skill-item {
-  margin-bottom: 1.5rem;
-}
-
-.skill-header {
+.timeline-item {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  box-shadow: 0 0 30px rgba(175, 61, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.timeline-content {
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  width: calc(50% - 60px);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-right: auto;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: auto;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px rgba(175, 61, 255, 0.2);
+}
+
+.timeline-content h3 {
+  font-size: 1.3rem;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+}
+
+.timeline-content p {
   color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
-.skill-bar {
-  width: 100%;
-  height: 10px;
-  background-color: var(--border-color);
-  border-radius: 5px;
-  overflow: hidden;
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.skill-progress {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-  border-radius: 6px;
-  box-shadow: 0 0 10px var(--primary-color);
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: rgba(175, 61, 255, 0.1);
+  border: 1px solid rgba(175, 61, 255, 0.3);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: rgba(175, 61, 255, 0.2);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* Estilos específicos para cada fase */
+.timeline-item.foundation .timeline-icon {
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  box-shadow: 0 0 30px rgba(76, 175, 80, 0.5);
+}
+
+.timeline-item.exploration .timeline-icon {
+  background: linear-gradient(135deg, #2196F3, #03A9F4);
+  box-shadow: 0 0 30px rgba(33, 150, 243, 0.5);
+}
+
+.timeline-item.leadership .timeline-icon {
+  background: linear-gradient(135deg, #FF9800, #FFC107);
+  box-shadow: 0 0 30px rgba(255, 152, 0, 0.5);
+}
+
+.timeline-item.purpose .timeline-icon {
+  background: linear-gradient(135deg, #E91E63, #F06292);
+  box-shadow: 0 0 30px rgba(233, 30, 99, 0.5);
+}
+
+.timeline-item.innovation .timeline-icon {
+  background: linear-gradient(135deg, #9C27B0, #BA68C8);
+  box-shadow: 0 0 30px rgba(156, 39, 176, 0.5);
+}
+
+.timeline-item.future .timeline-icon {
+  background: linear-gradient(135deg, #00BCD4, #4DD0E1);
+  box-shadow: 0 0 30px rgba(0, 188, 212, 0.5);
+}
+
+/* Hover effects específicos */
+.timeline-item.foundation:hover .timeline-content {
+  border-color: #4CAF50;
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+}
+
+.timeline-item.exploration:hover .timeline-content {
+  border-color: #2196F3;
+  box-shadow: 0 10px 30px rgba(33, 150, 243, 0.2);
+}
+
+.timeline-item.leadership:hover .timeline-content {
+  border-color: #FF9800;
+  box-shadow: 0 10px 30px rgba(255, 152, 0, 0.2);
+}
+
+.timeline-item.purpose:hover .timeline-content {
+  border-color: #E91E63;
+  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.2);
+}
+
+.timeline-item.innovation:hover .timeline-content {
+  border-color: #9C27B0;
+  box-shadow: 0 10px 30px rgba(156, 39, 176, 0.2);
+}
+
+.timeline-item.future:hover .timeline-content {
+  border-color: #00BCD4;
+  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.2);
+}
+
+/* Filosofia de aprendizado */
+.learning-philosophy {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem;
+  background: linear-gradient(135deg, rgba(175, 61, 255, 0.05), rgba(85, 255, 225, 0.05));
+  border-radius: 20px;
+  border: 1px solid rgba(175, 61, 255, 0.2);
   position: relative;
   overflow: hidden;
-  animation: skill-glow 3s ease-in-out infinite alternate;
 }
 
-@keyframes skill-glow {
-  from {
-    box-shadow: 0 0 10px var(--primary-color);
-  }
-  to {
-    box-shadow: 0 0 15px var(--primary-color);
-  }
-}
-
-.skill-progress::after {
+.learning-philosophy::before {
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  animation: shimmer 2s infinite;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--secondary-color));
 }
 
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
+.learning-philosophy blockquote {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.learning-philosophy blockquote::before,
+.learning-philosophy blockquote::after {
+  content: '"';
+  font-size: 3rem;
+  color: var(--primary-color);
+  opacity: 0.3;
+  position: absolute;
+}
+
+.learning-philosophy blockquote::before {
+  top: -1rem;
+  left: 0;
+}
+
+.learning-philosophy blockquote::after {
+  bottom: -2rem;
+  right: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .learning-timeline::before {
+    left: 30px;
+  }
+  
+  .timeline-item {
+    flex-direction: column !important;
+    align-items: flex-start;
+    padding-left: 80px;
+  }
+  
+  .timeline-icon {
+    left: 30px;
+    transform: translateX(-50%);
+  }
+  
+  .timeline-content {
+    width: 100%;
+    margin: 0 !important;
+  }
+  
+  .timeline-item:nth-child(even) {
+    flex-direction: column !important;
+  }
+  
+  .learning-philosophy {
+    padding: 2rem 1rem;
+  }
+  
+  .learning-philosophy blockquote {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-item {
+    padding-left: 60px;
+  }
+  
+  .timeline-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    left: 25px;
+  }
+  
+  .timeline-content {
+    padding: 1.5rem;
+  }
+  
+  .timeline-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .tag {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+  }
 } 

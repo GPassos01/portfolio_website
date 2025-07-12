@@ -1,0 +1,74 @@
+@keyframes waveFlow {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: -1200px;
+  }
+}
+
+.wave-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 540px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 540' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,270 C400,0 800,540 1200,270 L1200,540 L0,540 Z' fill='rgba(175,61,255,0.2)'/%3E%3C/svg%3E");
+  background-size: 1200px 540px;
+  background-position: 0 bottom;
+  background-repeat: repeat-x;
+  z-index: -1;
+  opacity: 0.8;
+  animation: waveFlow 25s linear infinite;
+}
+
+.wave-top{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 540px; /* mesma altura da onda original */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 540' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,270 C400,0 800,540 1200,270 L1200,540 L0,540 Z' fill='rgba(175,61,255,0.2)'/%3E%3C/svg%3E");
+  background-size: 1200px 540px;
+  background-position: 0 top;
+  background-repeat: repeat-x;
+  z-index: 1;
+  opacity: 0.8;
+  transform: scaleY(-1); /* Espelha verticalmente */
+  pointer-events: none;
+}
+
+/* Variantes para diferentes seções */
+.wave-primary .wave {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 540' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,270 C400,0 800,540 1200,270 L1200,540 L0,540 Z' fill='rgba(175,61,255,0.2)'/%3E%3C/svg%3E");
+}
+
+.wave-secondary .wave {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 540' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,270 C400,0 800,540 1200,270 L1200,540 L0,540 Z' fill='rgba(85,255,225,0.2)'/%3E%3C/svg%3E");
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .wave {
+    height: 270px;
+    background-size: 1200px 270px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wave {
+    height: 180px;
+    background-size: 1200px 180px;
+  }
+} 

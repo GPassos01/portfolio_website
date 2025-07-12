@@ -20,174 +20,254 @@
  * @since 2024
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import './Hero.css';
 
+/**
+ * Componente funcional Hero
+ * 
+ * Gerencia a exibição da seção principal do portfólio,
+ * incluindo carregamento de dados pessoais da API,
+ * estados de loading e renderização responsiva.
+ * 
+ * Estados:
+ * - profile: dados pessoais da API
+ * - loading: indicador de carregamento
+ * 
+ * @returns {JSX.Element} Seção Hero completa com apresentação
+ */
 const Hero = () => {
-  const handleDownloadCV = () => {
-    // Simular download do CV
-    const link = document.createElement('a');
-    link.href = '/cv-gabriel-passos.pdf';
-    link.download = 'CV-Gabriel-Passos.pdf';
-    link.click();
+  // Estado para armazenar dados pessoais vindos da API
+  const [profile, setProfile] = useState(null);
+  
+  // Estado para controlar exibição de loading
+  const [loading, setLoading] = useState(true);
+
+  /**
+   * Effect Hook para carregar dados da API
+   * 
+   * Executa uma requisição GET para o endpoint `/api/profile`
+   * ao montar o componente, carregando informações como:
+   * - Nome completo
+   * - Título profissional
+   * - Biografia
+   * - Links de contato (email, GitHub, LinkedIn)
+   */
+  useEffect(() => {
+    fetch('/api/profile')
+      .then(res => res.json())
+      .then(data => {
+        setProfile(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Erro ao carregar perfil:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  /**
+   * Função para rolar suavemente até uma seção
+   * 
+   * Implementa scroll suave até elementos com IDs específicos
+   * quando o usuário clica nos botões de call-to-action.
+   * 
+   * @param {string} elementId - ID do elemento de destino
+   */
+  const scrollToSection = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
   };
 
+  // Renderização condicional durante loading
+  if (loading) {
+    return (
+      <section className="hero hero-loading">
+        <div className="container">
+          <p>Carregando informações...</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section id="home" className="hero" aria-labelledby="hero-title">
+    <section id="home" className="section hero">
       <div className="container">
         <div className="hero-content">
           {/* 
-            CABEÇALHO PRINCIPAL
-            Título, subtítulo e descrição com animações
+            COLUNA ESQUERDA - Conteúdo Textual
+            Contém toda a informação textual e botões
           */}
           <motion.div
             className="hero-text"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 id="hero-title" className="hero-title">
-              Olá, eu sou{' '}
-              <span className="hero-name">Gabriel Passos</span>
-            </h1>
-            
-            <p className="hero-subtitle">
-              Desenvolvedor Full Stack iniciante apaixonado por criar soluções digitais
-            </p>
-            
-            <p className="hero-description">
-              Especializado em React, Node.js e tecnologias modernas. 
-              Busco oportunidades para crescer e contribuir em projetos desafiadores.
-            </p>
+            {/* Hook emocional */}
+            <motion.p 
+              className="hero-greeting"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              Olá! Eu sou
+            </motion.p>
 
-            {/* 
-              BOTÕES DE AÇÃO PRINCIPAIS
-              CTA para contato e download do CV
-            */}
-            <div className="hero-actions" role="group" aria-label="Ações principais">
-              <motion.button
-                className="btn btn-primary hero-btn"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Ir para seção de contato"
+            <motion.h1 
+              className="hero-name"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              {profile?.name || 'Gabriel Passos'}
+            </motion.h1>
+
+            {/* Título com propósito claro */}
+            <motion.h2 
+              className="hero-title"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              Desenvolvedor com Propósito Social
+            </motion.h2>
+
+            {/* Storytelling pessoal */}
+            <motion.p 
+              className="hero-description"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+            >
+              Acredito que cada linha de código pode mudar uma vida. Como estudante de 
+              Ciência da Computação, lidero projetos que conectam tecnologia e inclusão. 
+              Da presidência da Info Jr ao desenvolvimento de tecnologias assistivas, 
+              minha missão é criar soluções que realmente importam.
+            </motion.p>
+
+            {/* Call-to-actions específicos */}
+            <motion.div 
+              className="hero-buttons"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0, duration: 0.8 }}
+            >
+              <button 
+                className="btn btn-primary"
+                onClick={() => scrollToSection('projects')}
               >
-                <FaEnvelope aria-hidden="true" />
-                Vamos Conversar
-              </motion.button>
+                Ver Meus Projetos
+              </button>
               
-              <motion.button
-                className="btn btn-outline hero-btn"
-                onClick={handleDownloadCV}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Baixar currículo em PDF"
+              <button 
+                className="btn btn-outline"
+                onClick={() => scrollToSection('contact')}
               >
-                <FaDownload aria-hidden="true" />
-                Baixar CV
-              </motion.button>
-            </div>
+                Vamos Conversar
+              </button>
+            </motion.div>
+
+            {/* Redes sociais com contexto */}
+            <motion.div 
+              className="hero-social"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            >
+              {profile?.github && (
+                <a 
+                  href={profile.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="social-link"
+                  aria-label="Ver projetos no GitHub"
+                >
+                  <FaGithub />
+                </a>
+              )}
+              
+              {profile?.linkedin && (
+                <a 
+                  href={profile.linkedin} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="social-link"
+                  aria-label="Conectar no LinkedIn"
+                >
+                  <FaLinkedin />
+                </a>
+              )}
+              
+              {profile?.email && (
+                <a 
+                  href={`mailto:${profile.email}`}
+                  className="social-link"
+                  aria-label="Enviar email"
+                >
+                  <FaEnvelope />
+                </a>
+              )}
+            </motion.div>
           </motion.div>
 
-          {/* 
-            ÁREA VISUAL
-            Avatar e elementos decorativos
-          */}
+          {/* Área visual com foto de perfil */}
           <motion.div
             className="hero-visual"
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="hero-avatar">
-              <div className="avatar-placeholder" aria-label="Avatar de Gabriel Passos">
-                <span className="avatar-initials">GP</span>
+            <div className="hero-visual-content">
+              <motion.div 
+                className="hero-profile-image"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <div className="image-container">
+                  <img 
+                    src="/images/profile.png" 
+                    alt="Gabriel Passos - Desenvolvedor"
+                    className="profile-image"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="image-placeholder">
+                    <span>Gabriel Passos</span>
+                    <small>Adicione sua foto aqui</small>
+                  </div>
+                </div>
+                <div className="image-glow"></div>
+              </motion.div>
+              
+              <div className="hero-shapes">
+                <div className="shape shape-1"></div>
+                <div className="shape shape-2"></div>
+                <div className="shape shape-3"></div>
               </div>
-              <div className="avatar-glow" aria-hidden="true"></div>
-            </div>
-            
-            {/* 
-              ELEMENTOS DECORATIVOS
-              Código flutuante e partículas
-            */}
-            <div className="floating-code" aria-hidden="true">
-              <pre className="code-snippet">
-                <code>
-                  <span className="keyword">const</span> <span className="variable">developer</span> = {'{'}
-                  {'\n'}  <span className="property">name</span>: <span className="string">'Gabriel Passos'</span>,
-                  {'\n'}  <span className="property">role</span>: <span className="string">'Full Stack Developer'</span>,
-                  {'\n'}  <span className="property">passion</span>: <span className="string">'Creating amazing apps'</span>
-                  {'\n'}{'}'};
-                </code>
-              </pre>
             </div>
           </motion.div>
         </div>
 
-        {/* 
-          REDES SOCIAIS
-          Links para GitHub, LinkedIn e contato
-        */}
-        <motion.div
-          className="hero-social"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <p className="social-label">Conecte-se comigo:</p>
-          
-          <div className="social-links" role="list" aria-label="Redes sociais">
-            <a
-              href="https://github.com/gabrielpassos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              role="listitem"
-              aria-label="Visitar perfil no GitHub"
-            >
-              <FaGithub aria-hidden="true" />
-              <span className="sr-only">GitHub</span>
-            </a>
-            
-            <a
-              href="https://linkedin.com/in/gabrielpassos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              role="listitem"
-              aria-label="Visitar perfil no LinkedIn"
-            >
-              <FaLinkedin aria-hidden="true" />
-              <span className="sr-only">LinkedIn</span>
-            </a>
-            
-            <a
-              href="mailto:gabriel@email.com"
-              className="social-link"
-              role="listitem"
-              aria-label="Enviar email para Gabriel"
-            >
-              <FaEnvelope aria-hidden="true" />
-              <span className="sr-only">Email</span>
-            </a>
-          </div>
-        </motion.div>
-
-        {/* 
-          INDICADOR DE SCROLL
-          Seta animada para indicar mais conteúdo
-        */}
         <motion.div
           className="scroll-indicator"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          aria-hidden="true"
+          transition={{ delay: 2.5, duration: 1 }}
+          onClick={() => scrollToSection('about')}
         >
-          <div className="scroll-arrow"></div>
-          <p className="scroll-text">Role para explorar</p>
+          <span>Descubra minha história</span>
+          <div className="scroll-arrow">↓</div>
         </motion.div>
       </div>
     </section>

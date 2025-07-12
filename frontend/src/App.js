@@ -18,21 +18,19 @@
  * @since 2024
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 // Importação de todos os componentes da aplicação
 import Navbar from './components/Navbar';     // Navegação principal
 import Hero from './components/Hero';         // Seção de apresentação
 import About from './components/About';       // Sobre mim
-import Services from './components/Services'; // Serviços freelance
 import Projects from './components/Projects'; // Galeria de projetos
 import Skills from './components/Skills';     // Habilidades técnicas
-import Testimonials from './components/Testimonials'; // Depoimentos
 import Contact from './components/Contact';   // Formulário de contato
-import Footer from './components/Footer';
-import ParticleBackground from './components/ParticleBackground'; // Partículas modernas
-import CyberpunkLoader from './components/CyberpunkLoader'; // Loader moderno     // Rodapé
+import Footer from './components/Footer';     // Rodapé
+import GradientBackground from './components/GradientBackground'; // Background global
+import PWAInstall from './components/PWAInstall'; // Componente de instalação PWA
 
 /**
  * Componente funcional principal App
@@ -50,25 +48,48 @@ import CyberpunkLoader from './components/CyberpunkLoader'; // Loader moderno   
  * @returns {JSX.Element} Estrutura completa da aplicação
  */
 function App() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simular tempo de carregamento
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="loading-overlay">
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
-      {/* 
-        LOADER MODERNO
-        - Tela de inicialização
-        - Efeitos de glitch suaves
-        - Barra de progresso animada
-        - Transição suave
-      */}
-      <CyberpunkLoader />
+      {/* Indicador de progresso de scroll */}
+      <div 
+        className="scroll-progress" 
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
       
-      {/* 
-        PARTÍCULAS MODERNAS
-        - Efeito de partículas flutuantes
-        - Conectam quando próximas
-        - Cores modernas e elegantes
-        - Atmosfera profissional
-      */}
-      <ParticleBackground />
+      {/* Background global com gradientes suaves */}
+      <GradientBackground />
       
       {/* 
         NAVEGAÇÃO PRINCIPAL
@@ -87,27 +108,23 @@ function App() {
         - Botões de call-to-action
         - Animações de background
       */}
-      <Hero />
-      
-      {/* 
+      <main>
+        <section id="home">
+          <Hero />
+        </section>
+        
+        {/* 
         SEÇÃO SOBRE MIM
         - Biografia profissional
         - Informações pessoais
         - Objetivos de carreira
         - Animações de entrada
       */}
-      <About />
-      
-      {/* 
-        SEÇÃO SERVIÇOS FREELANCE
-        - Catálogo de serviços oferecidos
-        - Preços e prazos estimados
-        - Especificações técnicas
-        - Call-to-action para orçamentos
-      */}
-      <Services />
-      
-      {/* 
+        <section id="about">
+          <About />
+        </section>
+        
+        {/* 
         SEÇÃO PROJETOS
         - Cards interativos com hover effects
         - Projeto principal: Sistema de Análise de Enchentes
@@ -115,27 +132,22 @@ function App() {
         - Links para GitHub e demos
         - Grid responsivo
       */}
-      <Projects />
-      
-      {/* 
+        <section id="skills">
+          <Skills />
+        </section>
+        
+        {/* 
         SEÇÃO HABILIDADES
         - Barras de progresso animadas
         - Categorias: Backend, Frontend, Tools
         - Níveis de proficiência visual
         - Efeitos de shimmer e glow
       */}
-      <Skills />
-      
-      {/* 
-        SEÇÃO DEPOIMENTOS
-        - Testimonials de clientes satisfeitos
-        - Avaliações e feedback
-        - Estatísticas de projetos
-        - Credibilidade e confiança
-      */}
-      <Testimonials />
-      
-      {/* 
+        <section id="projects">
+          <Projects />
+        </section>
+        
+        {/* 
         SEÇÃO CONTATO
         - Formulário funcional
         - Validação de campos
@@ -143,7 +155,10 @@ function App() {
         - Feedback visual para usuário
         - Design neon consistente
       */}
-      <Contact />
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
       
       {/* 
         RODAPÉ
@@ -153,6 +168,35 @@ function App() {
         - Design minimalista
       */}
       <Footer />
+      
+      {/* Componente de instalação PWA */}
+      <PWAInstall />
+      
+      {/* Skip to main content para acessibilidade */}
+      <a 
+        href="#home" 
+        className="sr-only"
+        style={{
+          position: 'absolute',
+          top: '-40px',
+          left: '6px',
+          zIndex: 10000,
+          padding: '8px',
+          backgroundColor: 'var(--accent-color)',
+          color: 'var(--bg-primary)',
+          textDecoration: 'none',
+          borderRadius: '4px',
+          transition: 'top 0.3s'
+        }}
+        onFocus={(e) => {
+          e.target.style.top = '6px';
+        }}
+        onBlur={(e) => {
+          e.target.style.top = '-40px';
+        }}
+      >
+        Pular para o conteúdo principal
+      </a>
     </div>
   );
 }
